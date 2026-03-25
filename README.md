@@ -1,5 +1,3 @@
-# buying-telegram-premium-members
-Buying Telegram Premium Members for test
 # Premium Member Distribution Tests (Telegram)
 
 > Internal notes from interaction threshold experiments.  
@@ -56,9 +54,18 @@ Below is a simplified excerpt from one of the observation cycles:
   "join_velocity": "unstable",
   "leave_rate": "above_expected"
 }
+Later cycle:
+
+{
+  "channel_id": 84721,
+  "total_members": 326,
+  "premium_members": 7,
+  "join_velocity": "normalized",
+  "leave_rate": "within_range"
+}
 The total member delta was small. The behavioral shift was not.
 
-##Where external variables are entered for testing
+Where external variables entered testing
 At some point, controlled runs required isolating premium distribution as a variable.
 
 Not as a strategy — as a measurement input.
