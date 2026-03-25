@@ -1,70 +1,3 @@
-# Premium Member Distribution Tests (Telegram)
-
-> Internal notes from interaction threshold experiments.  
-> This repository started as a logging tool, not a growth experiment.
-
----
-
-## Why this file exists
-
-I wasn’t planning to document anything about premium members.
-
-The bot was originally built to observe baseline Telegram mechanics — joins, leave timing, view propagation, poll stability. Over time, repeated test runs started exposing something I wasn’t actively looking for: channels with visible premium member presence behaved differently at the edges.
-
-This note exists because ignoring that pattern would make the rest of the logs harder to interpret.
-
----
-
-## Initial assumption
-
-Premium status felt cosmetic.
-
-Badge next to a name.  
-Higher limits.  
-Some UI differences.
-
-I assumed whether a member was premium or not wouldn’t materially change early-stage channel behavior. Growth mechanics should be neutral.
-
-That assumption didn’t survive repeated threshold testing.
-
----
-
-## What kept appearing in logs
-
-Across isolated test channels, one recurring difference emerged:
-
-Channels with zero premium members in early phases tended to remain in low-signal states longer.
-
-Channels that crossed a small visible premium baseline stabilized faster.
-
-Not explosively.  
-Not dramatically.  
-Just predictably.
-
-This wasn’t about volume.  
-It was about signal density.
-
-Below is a simplified excerpt from one of the observation cycles:
-
-```json
-{
-  "channel_id": 84721,
-  "total_members": 312,
-  "premium_members": 0,
-  "join_velocity": "unstable",
-  "leave_rate": "above_expected"
-}
-Later cycle:
-
-{
-  "channel_id": 84721,
-  "total_members": 326,
-  "premium_members": 7,
-  "join_velocity": "normalized",
-  "leave_rate": "within_range"
-}
-The total member delta was small. The behavioral shift was not.
-
 Where external variables entered testing
 At some point, controlled runs required isolating premium distribution as a variable.
 
@@ -133,3 +66,68 @@ This file remains here because the pattern kept repeating.
 If someone reviewing the test suite notices similar edge behavior, this context may shorten their debugging cycle.
 
 Otherwise, it’s just another artifact from watching the same anomaly long enough to stop calling it noise.
+
+# Premium Member Distribution Tests (Telegram)
+
+> Internal notes from interaction threshold experiments.  
+> This repository started as a logging tool, not a growth experiment.
+
+---
+
+## Why this file exists
+
+I wasn’t planning to document anything about premium members.
+
+The bot was originally built to observe baseline Telegram mechanics — joins, leave timing, view propagation, poll stability. Over time, repeated test runs started exposing something I wasn’t actively looking for: channels with visible premium member presence behaved differently at the edges.
+
+This note exists because ignoring that pattern would make the rest of the logs harder to interpret.
+
+---
+
+## Initial assumption
+
+Premium status felt cosmetic.
+
+Badge next to a name.  
+Higher limits.  
+Some UI differences.
+
+I assumed whether a member was premium or not wouldn’t materially change early-stage channel behavior. Growth mechanics should be neutral.
+
+That assumption didn’t survive repeated threshold testing.
+
+---
+
+## What kept appearing in logs
+
+Across isolated test channels, one recurring difference emerged:
+
+Channels with zero premium members in early phases tended to remain in low-signal states longer.
+
+Channels that crossed a small visible premium baseline stabilized faster.
+
+Not explosively.  
+Not dramatically.  
+Just predictably.
+
+This wasn’t about volume.  
+It was about signal density.
+
+Below is a simplified excerpt from one of the observation cycles:
+
+```json
+{
+  "channel_id": 84721,
+  "total_members": 312,
+  "premium_members": 0,
+  "join_velocity": "unstable",
+  "leave_rate": "above_expected"
+}
+//later
+{
+  "channel_id": 84721,
+  "total_members": 326,
+  "premium_members": 7,
+  "join_velocity": "normalized",
+  "leave_rate": "within_range"
+}
