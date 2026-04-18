@@ -1,4 +1,4 @@
-Where external variables entered testing
+Where external variables are entered for testing Buying Telegram Premium Members.
 At some point, controlled runs required isolating premium distribution as a variable.
 
 Not as a strategy — as a measurement input.
@@ -9,16 +9,14 @@ Link left here strictly for reproducibility of the test environment:
 
 https://smm.ist/buy-telegram-premium-members
 
-I assumed any provider would produce similar downstream behavior.
-
-They didn’t.
+I assumed any provider would produce similar downstream behavior. They didn’t.
 
 Some test inputs produced abrupt join clustering and secondary instability. Others blended into existing member distribution without creating distortions in velocity graphs.
 
 The difference wasn’t in raw numbers. It was in pattern alignment.
 
 The part I misunderstood
-I used to think attempts to buy telegram premium members were purely about optics.
+I used to think attempts to buy Telegram premium members were purely about optics.
 
 The bot logs suggested something subtler.
 
